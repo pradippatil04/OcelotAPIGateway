@@ -21,6 +21,11 @@ namespace OrderProcessing
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((hostingContex , builder) => {
+                    builder
+                    .SetBasePath(hostingContex.HostingEnvironment.ContentRootPath)
+                    .AddJsonFile("ocelot.json", optional: false, reloadOnChange: false);
                 });
-    }
+   }
 }
